@@ -5,8 +5,7 @@ import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-calculator',
-  templateUrl: './calculator.component.html',
-  styleUrls: ['./calculator.component.scss']
+  templateUrl: './calculator.component.html'
 })
 export class CalculatorComponent implements OnInit {
 
@@ -32,8 +31,6 @@ export class CalculatorComponent implements OnInit {
         Validators.pattern('^[0-9]*$')
       ] ]
     });
-
-    console.log(this.rateForm);
   }
 
   onSubmit() {
