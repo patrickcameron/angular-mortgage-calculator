@@ -34,10 +34,10 @@ export class CalculatorComponent implements OnInit {
   }
 
   onSubmit() {
-    this.monthlyPayment = this.calculateMonthlyPayment( this.rateForm.value.amount, this.rateForm.value.rate );
+    this.monthlyPayment = this.calculateMonthlyPayment( this.rateForm.value.amount, this.rateForm.value.rate, this.rateForm.value.years );
   }
 
-  calculateMonthlyPayment(amount:number, rate:number, years: number = 25) {
+  calculateMonthlyPayment(amount:number, rate:number, years:number) {
 
     const monthlyRate = ( rate / 12 ) * 0.01;
 
