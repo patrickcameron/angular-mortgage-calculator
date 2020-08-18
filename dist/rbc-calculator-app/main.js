@@ -284,9 +284,9 @@ class CalculatorComponent {
         });
     }
     onSubmit() {
-        this.monthlyPayment = this.calculateMonthlyPayment(this.rateForm.value.amount, this.rateForm.value.rate);
+        this.monthlyPayment = this.calculateMonthlyPayment(this.rateForm.value.amount, this.rateForm.value.rate, this.rateForm.value.years);
     }
-    calculateMonthlyPayment(amount, rate, years = 25) {
+    calculateMonthlyPayment(amount, rate, years) {
         const monthlyRate = (rate / 12) * 0.01;
         const numMonthlyPayments = years * 12;
         const raise = 1 - Math.pow(1 + monthlyRate, (numMonthlyPayments * -1));
