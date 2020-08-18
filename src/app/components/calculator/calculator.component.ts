@@ -4,29 +4,40 @@ import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-calculator',
+  templateUrl: './calculator.component.html',
+  styleUrls: ['./calculator.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class CalculatorComponent implements OnInit {
 
-  myForm: FormGroup;
-  monthlypayment: number;
+  rateForm: FormGroup;
+  monthlyPayment: string;
 
-  constructor(private fb: FormBuilder) {
-    window['myangular'] = this;
-  }
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
-    this.myForm = this.fb.group({
-      amount: ['', [
+    this.rateForm = this.fb.group({
+      amount: ['500000', [
         Validators.required,
         Validators.pattern('^[0-9]*$'),
         Validators.minLength(5),
         Validators.maxLength(8)
-      ]],
-      rate: ''
+      ] ],
+      rate: ['5.00', [
+        Validators.required,
+        Validators.pattern('^[0-9\.]*$')
+      ] ],
+      years: ['25', [
+        Validators.required,
+        Validators.pattern('^[0-9]*$')
+      ] ]
     });
+
+    console.log(this.rateForm);
+  }
+
+  onSubmit() {
+    this.monthlyPayment = this.calculateMonthlyPayment( this.rateForm.value.amount, this.rateForm.value.rate );
   }
 
   calculateMonthlyPayment(amount:number, rate:number, years: number = 25) {

@@ -1,0 +1,57 @@
+<form [formGroup]="rateForm" (ngSubmit)="onSubmit()">
+ 
+    <div class="form-group">
+
+        <!-- Amount -->
+        <div class="form-group">
+            <label for="rf-amount">Amount</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">$</div>
+                </div>
+                <input 
+                    id="rf-amount"
+                    class="form-control" 
+                    type="number" 
+                    formControlName="amount" 
+                    autofocus>
+            </div>
+        </div>
+
+        <!-- Interest Rate -->
+        <div class="form-group">
+            <label for="rf-rate">Interest Rate</label>
+            <div class="input-group">
+                <input 
+                    id="rf-rate" 
+                    class="form-control" 
+                    formControlName="rate">
+                <div class="input-group-append">
+                    <div class="input-group-text">%</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Years -->
+        <div class="form-group">
+            <label for="rf-years">Years</label>
+            <div class="input-group">
+                <input 
+                    id="rf-years" 
+                    class="form-control" 
+                    formControlName="years">
+            </div>
+        </div>
+
+        <!-- Submit -->
+        <div class="form-group">
+            <input [disabled]="rateForm.invalid" class="btn btn-primary" type="submit" value="Submit">
+        </div>
+    
+    </div>
+
+</form>
+
+<div *ngIf="monthlyPayment" class="alert alert-success" role="alert">
+    Your monthly payment would be ${{ monthlyPayment }}.
+</div>
