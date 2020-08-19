@@ -21,7 +21,21 @@ describe('CalculatorComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create the component', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should create the input fields', () => {
+    const fields = fixture.debugElement.nativeElement;
+    
+    const amountInput = fields.querySelector('input[id="rf-amount"]');
+    const rateInput = fields.querySelector('input[id="rf-rate"]');
+    const yearsInput = fields.querySelector('input[id="rf-years"]');
+    const submit = fields.querySelector('input[id="rf-submit"]');
+
+    expect(amountInput).toBeTruthy();
+    expect(rateInput).toBeTruthy();
+    expect(yearsInput).toBeTruthy();
+    expect(submit).toBeTruthy();
   });
 });
